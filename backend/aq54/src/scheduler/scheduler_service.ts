@@ -22,7 +22,7 @@ export class SchedulerService implements OnModuleInit {
   }
 
   private async fetchDataFromStations() {
-    const stations = [283164601, 283181971]; // Add your stations here
+    const stations = [283164601, 283181971]; 
 
     for (const station of stations) {
       this.logger.debug(`Fetching data for station ${station}.`);

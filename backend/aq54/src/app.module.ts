@@ -7,6 +7,7 @@ import { SensorData } from './sensorData/sensorData_entity';
 import { SensorDataModule } from './sensorData/sensorDat_module';
 import { ApiModule } from './api/api_module';
 import { SchedulerModule } from './scheduler/scheduler_module';
+import { AggregatedDataModule } from './aggregated-data/aggregated-data_module';
 
 
 @Module({
@@ -26,6 +27,7 @@ import { SchedulerModule } from './scheduler/scheduler_module';
     SensorDataModule,
     ApiModule,
     SchedulerModule,
+    AggregatedDataModule,
   ],
   controllers: [AppController],
   providers: [AppService],

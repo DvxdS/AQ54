@@ -55,13 +55,13 @@ export class SensorDataService {
     
       const createSensorDataDtos: CreateSensorDataDto[] = [];
     
-      // Transform the data into CreateSensorDataDto format
+      // data transformation
       for (const item of data) {
         if (!item.timestamp || item.CO === undefined || item.T === undefined || item['T. int.'] === undefined || 
             item.NO2 === undefined || item.O3 === undefined || item.PM10 === undefined || item['PM2.5'] === undefined || 
             item.RH === undefined) {
           console.error('Incomplete data item:', item);
-          continue; // Skip incomplete data items
+          continue; 
         }
     
         const createSensorDataDto: CreateSensorDataDto = {
@@ -89,7 +89,7 @@ export class SensorDataService {
         return;
       }
     
-      // Save each sensor data to the database
+      // Enregistrer les donnees dans la db
       for (const createSensorDataDto of createSensorDataDtos) {
         try {
           await this.create(createSensorDataDto);
@@ -99,7 +99,7 @@ export class SensorDataService {
       }
     } catch (error) {
       console.error('Error fetching hourly averages:', error);
-      // Handle error appropriately
+      
     }
   }    
 }
