@@ -9,9 +9,9 @@ export class SchedulerService implements OnModuleInit {
   constructor(private readonly sensorDataService: SensorDataService) {}
 
   async onModuleInit() {
-    this.logger.debug('Application startup: Fetching data from stations.');
-    await this.fetchDataFromStations();
-    this.logger.debug('Initial data fetch completed.');
+    //this.logger.debug('Application startup: Fetching data from stations.');
+    //await this.fetchDataFromStations();
+    //this.logger.debug('Initial data fetch completed.');
   }
 
   @Cron(CronExpression.EVERY_HOUR)
