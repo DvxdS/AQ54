@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { signUp } from "../api/auth_api"; 
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 const SignUp: React.FC = () => {
+  
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const navigate = useNavigate();
   
     const handleSignUp = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -22,7 +24,7 @@ const SignUp: React.FC = () => {
       try {
         await signUp(email, password);
         console.log("succesed sign up")
-        // Redirect or update UI here upon successful sign-up
+        navigate('/mainpage')
       } catch (err: any) {
         setError(err.response.data.message || "An error occurred");
         

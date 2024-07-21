@@ -1,12 +1,14 @@
 
 import React, { useState } from "react";
 import { signIn } from "../api/auth_api";
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    const navigate = useNavigate();
   
     const handleSignIn = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -14,7 +16,7 @@ const SignIn: React.FC = () => {
       try {
         await signIn(email, password);
         console.log("successed Sign in ")
-        // Redirect or update UI here upon successful sign-in
+        navigate("/mainpage")
       } catch (err: any) {
         setError(err.response.data.message || "An error occurred");
       }
