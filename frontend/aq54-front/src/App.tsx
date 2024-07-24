@@ -10,7 +10,7 @@ function App() {
   
 
   return (
-    
+     
     <Router>
       <Routes>
       <Route path="/" element={<SignUp />} />
@@ -23,6 +23,7 @@ function App() {
 
 
     </Router>
+    
     
      
     
