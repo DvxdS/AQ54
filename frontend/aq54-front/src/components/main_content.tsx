@@ -7,12 +7,27 @@ import debounce from 'debounce';
 import MapComponent from './map';
 
 
-const MainContent: React.FC = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
+interface MainContentProps {
+    hourlyData: any;
+    setSelectedDate: (date: Date | null) => void;
+    selectedDate: Date;
+    selectedMetric: string;
+    setSelectedMetric: (metric: string) => void;
+    loading: boolean;
+}
+
+const MainContent: React.FC<MainContentProps> = ({
+    hourlyData,
+    setSelectedDate,
+    selectedDate,
+    selectedMetric,
+    setSelectedMetric
+}) => {
+   // const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedStation, setSelectedStation] = useState<string | null>(null); 
-    const [hourlyData, setHourlyData] = useState<any>(null); 
+   // const [hourlyData, setHourlyData] = useState<any>(null); 
     const metrics = ['CO', 'O3', 'PM2_5', 'PM10', 'NO2', 'temperature', 'internal_temperature', 'RH'];
-    const [selectedMetric, setSelectedMetric] = useState<string>(metrics[0]); 
+   // const [selectedMetric, setSelectedMetric] = useState<string>(metrics[0]); 
     const [loading, setLoading] = useState<boolean>(false);
 
     // Function to handle date change
@@ -33,6 +48,7 @@ const MainContent: React.FC = () => {
     };
 
     // Fetch and process data when selectedDate or selectedMetric changes
+    /*
     const debouncedFetchData = useCallback(
         debounce(async (date: Date) => {
             setLoading(true);
@@ -46,6 +62,7 @@ const MainContent: React.FC = () => {
     useEffect(() => {
         debouncedFetchData(selectedDate);
     }, [selectedDate, selectedMetric, debouncedFetchData]);
+    */
 
     const processedData = useMemo(() => {
         if (!hourlyData) return null;
